@@ -1,12 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Image, Text, View, Button } from 'react-native';
 
 export default function App() {
+  
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <Image source={require('./src/img/cavalo-paraguaio.jpg')} style={styles.img}/>
+      <Button onPress={TocaSom("Aqui Fera")}>Aqui</Button>
+      </View>
   );
 }
 
@@ -17,4 +17,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  img :{
+    flex: 1,    
+    aspectRatio: 1.5, 
+    resizeMode: 'contain' 
+  }
 });
+
+function TocaSom(msg){
+  return <Text></Text>
+}
