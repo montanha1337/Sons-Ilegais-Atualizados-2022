@@ -1,53 +1,52 @@
-import { StyleSheet, Image, Text, View, Button } from 'react-native';
+import { StyleSheet, Image, Text, SafeAreaView,View, Button,FlatList } from 'react-native';
 import {Audio} from 'expo-av';
 import {sounds} from './src/sounds';
 import { TouchableOpacity } from 'react-native';
+import { Appbar } from 'react-native-paper';
 
 
 export default function App() {
-
+ 
   return (
-    <View style={styles.container}>
-      {/* <Image source={require('./src/img/cavalo-paraguaio.jpg')} style={styles.img} /> */}
-      {/* <Button
-        title="click me"
-        style={{ fontSize: 20, color: 'green' }}
-        styleDisabled={{ color: 'red' }}
-        onPress={() => this.TocaSom()}>
-      </Button> */
-      }
-     
-      {sounds.map((item,index) => (
-       <View key ={index} style={styles.buttonContainer}>
-          <TouchableOpacity
-        style={styles.button}
-        onPress={() => onPress(index)}
-      >
-        <Text>{item.title}</Text>
-      </TouchableOpacity>
-          
-       </View> 
-   
+    
+    <SafeAreaView style={styles.container}>
+      <Appbar.Header>
+      <Appbar.Content title="SONS ILEGAIS ATUALIZADO 2022"/>
+    </Appbar.Header>
+      {sounds.map((item, index) => (
+        <View key={index} style={styles.buttonContainer}>
+          <TouchableOpacity onPress={() => onPress(index)} style={styles.appButtonContainer}>
+            <Text style={styles.appButtonText}>{item.title}</Text>
+          </TouchableOpacity>
+
+        </View>
+
       ))}
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  buttonContainer:{
-    height: 40,
-    margin: 5
+  bottom: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  appButtonContainer: {
+    margin:10,
+    elevation: 8,
+    backgroundColor: "#009688",
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 12
   },
-  img: {
-    flex: 1,
-    aspectRatio: 1.5,
-    resizeMode: 'contain'
+  appButtonText: {
+    fontSize: 18,
+    color: "#fff",
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase"
   }
 });
 
@@ -76,3 +75,6 @@ const styles = StyleSheet.create({
      console.log(error)
    }
  }
+
+
+
